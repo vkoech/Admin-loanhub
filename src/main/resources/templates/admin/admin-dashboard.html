@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar('dashboard')"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <h2 class="mb-3">Dashboard</h2>
+
+        <!-- Stats Cards -->
+        <div class="dashboard-cards">
+
+            <div class="stat-card">
+                <div class="stat-title">Total Fundings</div>
+                <div class="stat-value" th:text="${totalFundings ?: 0}">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-title">Active Proposals</div>
+                <div class="stat-value" th:text="${totalProposals ?: 0}">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-title">Loans Issued</div>
+                <div class="stat-value" th:text="${totalLoans ?: 0}">0</div>
+            </div>
+
+            <div class="stat-card highlight">
+                <div class="stat-title">System Status</div>
+                <div class="stat-value small">Operational</div>
+            </div>
+
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="dashboard-card">
+            <h3>Welcome back 👋</h3>
+            <p class="muted">
+                Manage funding opportunities, proposals, and loans from one place.
+                Use the sidebar to navigate through the admin tools.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="sidebar(activePage)" class="sidebar">
+    <h4>Admin Panel</h4>
+
+    <ul class="nav-list">
+        <li>
+            <a th:href="@{/admin/dashboard}"
+               th:classappend="${activePage=='dashboard'} ? 'active'">
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/admin/funding}"
+               th:classappend="${activePage=='funding'} ? 'active'">
+                Fundings
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/admin/proposals}"
+               th:classappend="${activePage=='proposals'} ? 'active'">
+                Proposals
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/admin/loans}"
+               th:classappend="${activePage=='loans'} ? 'active'">
+                Loans
+            </a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

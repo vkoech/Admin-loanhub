@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Funding List</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar('funding')"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="flex-between mb-3">
+            <h2>Fundings</h2>
+            <a href="/admin/funding/add" class="btn btn-primary">
+                ➕ Add Funding
+            </a>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Eligibility</th>
+                    <th>Category</th>
+                    <th>Link</th>
+                    <th>Deadline</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="funding : ${fundings}">
+                    <td th:text="${funding.title}"></td>
+                    <td th:text="${funding.description ?: '—'}"></td>
+                    <td th:text="${funding.eligibility ?: '—'}"></td>
+                    <td th:text="${funding.category ?: '—'}"></td>
+                    <td th:text="${funding.link ?: '—'}"></td>
+                    <td th:text="${funding.deadline ?: '—'}"></td>
+                    <td>
+                        <div class="actions-cell">
+                            <a th:href="@{/admin/funding/edit/{id}(id=${funding.id})}"
+                               class="icon-btn edit-btn"></a>
+
+                            <a th:href="@{/admin/funding/delete/{id}(id=${funding.id})}"
+                               class="icon-btn delete-btn"
+                               onclick="return confirm('Delete this funding?');"></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
