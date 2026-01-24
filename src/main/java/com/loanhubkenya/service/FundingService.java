@@ -10,4 +10,6 @@ public interface FundingService {
     List<Funding> getAllFundings();
     Funding getFundingById(UUID id);
     void deleteFunding(UUID id);
+    long getTotalFundings();
+
 }

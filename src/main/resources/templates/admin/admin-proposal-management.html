@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Proposal Management</title>
+    <link rel="stylesheet" th:href="@{/css/proposal.css}">
+</head>
+<body>
+
+<div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar('proposal-management')"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <h2>Proposal Management</h2>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" data-tab="proposalTypeTab">Proposal Type</div>
+            <div class="tab" data-tab="proposalTab">Proposal</div>
+        </div>
+
+        <!-- Proposal Type Tab -->
+        <div id="proposalTypeTab" class="tab-content active">
+            <div class="form-table-flex">
+                <!-- Form -->
+                <div class="form-card">
+                    <h3>Add Proposal Type</h3>
+                    <form class="admin-form" th:action="@{/admin/proposal-types/save}" method="post">
+                        <div class="form-group">
+                            <label for="typeName">Type Name</label>
+                            <input type="text" name="name" id="typeName" placeholder="Enter proposal type" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Type</button>
+                    </form>
+                </div>
+
+                <!-- Table -->
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th style="width:120px">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="type : ${proposalTypes}">
+                            <td th:text="${type.name}">Type Name</td>
+                            <td class="actions-cell">
+                                <a th:href="@{'/admin/proposal-types/delete/' + ${type.id}}" class="icon-btn delete-btn"
+                                   onclick="return confirm('Delete this proposal type?');"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposal Tab -->
+        <div id="proposalTab" class="tab-content">
+            <div class="form-table-flex">
+                <!-- Form -->
+                <div class="form-card">
+                    <h3>Add Proposal</h3>
+                    <form class="admin-form" th:action="@{/admin/proposals/save}" method="post">
+                        <div class="form-group">
+                            <label for="proposalTitle">Title</label>
+                            <input type="text" name="title" id="proposalTitle" placeholder="Enter proposal title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="proposalTypeSelect">Proposal Type</label>
+                            <select name="proposalTypeId" id="proposalTypeSelect" required>
+                                <option th:each="type : ${allProposalTypes}"
+                                        th:value="${type.id}"
+                                        th:text="${type.name}">
+                                </option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Proposal</button>
+                    </form>
+                </div>
+
+                <!-- Table -->
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th style="width:120px">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="proposal : ${proposals}">
+                            <td th:text="${proposal.title}">Proposal Title</td>
+                            <td th:text="${proposal.proposalType.name}">Proposal Type</td>
+                            <td class="actions-cell">
+                                <a th:href="@{'/admin/proposals/delete/' + ${proposal.id}}" class="icon-btn delete-btn"
+                                   onclick="return confirm('Delete this proposal?');"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

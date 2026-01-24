@@ -37,5 +37,10 @@ public class FundingServiceImpl implements FundingService {
     public void deleteFunding(UUID id) {
         fundingRepository.deleteById(id);
     }
+
+    @Override
+    public long getTotalFundings() {
+        return fundingRepository.count();
+    }
 }
 
