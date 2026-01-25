@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Apply for Proposal</title>
+    <link rel="stylesheet" th:href="@{/css/proposal.css}">
+</head>
+<body>
+<div class="main-content">
+
+    <div class="form-card">
+        <h4>Apply for a Proposal</h4>
+
+        <form th:action="@{/proposals/apply}" method="post" class="admin-form">
+
+            <!-- Requester Full Name -->
+            <div class="form-group">
+                <label>Your Full Name</label>
+                <input type="text" name="fullName" placeholder="Enter Full Name" required>
+            </div>
+
+            <!-- Requester Email -->
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter Email" required>
+            </div>
+
+            <!-- Select Proposal -->
+            <div class="form-group">
+                <label>Select Proposal</label>
+                <select name="proposalId" required>
+                    <option th:each="proposal : ${proposals}"
+                            th:value="${proposal.id}"
+                            th:text="${proposal.proposalType.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-sm-width">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
