@@ -11,5 +11,5 @@ public interface FundingService {
     Funding getFundingById(UUID id);
     void deleteFunding(UUID id);
     long getTotalFundings();
-
+    List<Funding> getAllActiveFundings();
 }

@@ -34,9 +34,6 @@ public class FundingController {
 
     @PostMapping("/add")
     public String addFunding(@ModelAttribute Funding funding) {
-        if (funding.getId() == null) {
-            funding.setId(UUID.randomUUID());
-        }
         fundingService.save(funding);
         return "redirect:/admin/funding";
     }

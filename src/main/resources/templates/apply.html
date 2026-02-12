@@ -2,43 +2,95 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Apply for Proposal</title>
-    <link rel="stylesheet" th:href="@{/css/proposal.css}">
-</head>
+    <link rel="stylesheet" th:href="@{/css/style.css}"></head>
 <body>
-<div class="main-content">
 
-    <div class="form-card">
-        <h4>Apply for a Proposal</h4>
+<div th:replace="header :: mainHeader"></div>
 
-        <form th:action="@{/proposals/apply}" method="post" class="admin-form">
+<div class="hero-section">
 
-            <!-- Requester Full Name -->
-            <div class="form-group">
-                <label>Your Full Name</label>
-                <input type="text" name="fullName" placeholder="Enter Full Name" required>
+    <div class="tabs">
+        <div th:classappend="${activeTab == 'apply'} ? 'active'" class="tab" onclick="showTab('apply')">Apply For Proposal</div>
+        <div th:classappend="${activeTab == 'track'} ? 'active'" class="tab" onclick="showTab('track')">Track Applications</div>
+    </div>
+
+    <div th:classappend="${activeTab == 'apply'} ? 'active'" class="tab-content" id="apply-tab">
+        <div class="form-card">
+            <h4>Apply for a Proposal</h4>
+            <form th:action="@{/proposals/apply}" method="post" class="admin-form">
+                <div class="form-group">
+                    <label>Your Full Name</label>
+                    <input type="text" name="fullName" placeholder="Enter Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Proposal</label>
+                    <select name="proposalId" required>
+                        <option th:each="proposal : ${proposals}"
+                                th:value="${proposal.id}"
+                                th:text="${proposal.proposalType.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm-width">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div th:classappend="${activeTab == 'track'} ? 'active'" class="tab-content" id="track-tab">
+        <div class="form-card">
+            <h4>Track Applications</h4>
+            <form method="get" th:action="@{/proposals/request}" class="admin-form">
+                <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
+                    <input type="email"
+                           name="filterEmail"
+                           th:value="${filterEmail}"
+                           placeholder="Enter Email to filter"
+                           class="form-control"
+                           style="width: 400px;"> <!-- fixed smaller width -->
+
+                    <button type="submit" class="btn btn-primary btn-sm-width">Search</button>
+                </div>
+                <input type="hidden" name="activeTab" value="track">
+            </form>
+
+            <div class="table-wrapper" th:if="${requesters != null}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Proposal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="r : ${requesters}">
+                        <td th:text="${r.fullName}"></td>
+                        <td th:text="${r.email}"></td>
+                        <td th:text="${r.proposal.title}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <!-- Requester Email -->
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Enter Email" required>
-            </div>
-
-            <!-- Select Proposal -->
-            <div class="form-group">
-                <label>Select Proposal</label>
-                <select name="proposalId" required>
-                    <option th:each="proposal : ${proposals}"
-                            th:value="${proposal.id}"
-                            th:text="${proposal.proposalType.name}"></option>
-                </select>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-sm-width">Submit Application</button>
-            </div>
-        </form>
+        </div>
     </div>
 
 </div>
+<div th:replace="footer :: mainFooter"></div>
+
+<script>
+    function showTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        document.getElementById(tab + '-tab').classList.add('active');
+
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
 </body>
 </html>

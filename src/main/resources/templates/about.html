@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Form – Loanhub Kenya</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- HEADER -->
+<div th:replace="header :: mainHeader"></div>
+<!-- HERO SECTION -->
+<section class="hero" style="background-image: url('assets/images/about_us.jpg');">
+    <div class="overlay">
+        <h2>About Loanhub Kenya</h2>
+        <p>Empowering Kenyan entrepreneurs with funding access, insights, and expert proposal support.</p>
+        <!-- Optional CTA -->
+        <!-- <a href="funding.html" class="btn-yellow">Explore Funding</a> -->
+    </div>
+</section>
+<!-- MAIN CONTENT -->
+<section class="content">
+    <p><strong>Vision:</strong> To democratize access to funding for Kenyan entrepreneurs.</p>
+    <p><strong>Mission:</strong> To simplify funding discovery and help entrepreneurs secure capital through expert guidance.</p>
+</section>
+
+<div th:replace="footer :: mainFooter"></div>
+
+</body>
+</html>

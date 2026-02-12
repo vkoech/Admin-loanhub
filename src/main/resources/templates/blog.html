@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Resources – Loanhub Kenya</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- HEADER -->
+<div th:replace="header :: mainHeader"></div>
+
+<!-- BLOG / RESOURCES -->
+<section class="blog-section">
+    <div class="container">
+        <h2 class="section-title">Latest Blog & Funding Insights</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Top 10 Grants for Kenyan SMEs in 2025</h3>
+                <p>Discover the best funding opportunities available for small and medium businesses in Kenya this year.</p>
+                <a href="#" class="card-btn">Read More</a>
+            </div>
+
+            <div class="card">
+                <h3>How to Write a Winning Grant Proposal</h3>
+                <p>Learn tips and strategies to craft a compelling proposal that increases your chances of securing funding.</p>
+                <a href="#" class="card-btn">Read More</a>
+            </div>
+
+            <div class="card">
+                <h3>Funding Opportunities for Agribusinesses</h3>
+                <p>Explore grants, loans, and programs specifically targeting agribusiness and agricultural startups.</p>
+                <a href="#" class="card-btn">Read More</a>
+            </div>
+
+            <div class="card">
+                <h3>Difference Between Loans and Grants</h3>
+                <p>Understand the key differences, benefits, and obligations of loans versus grants for entrepreneurs.</p>
+                <a href="#" class="card-btn">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div th:replace="footer :: mainFooter"></div>
+</body>
+</html>

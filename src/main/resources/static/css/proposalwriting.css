@@ -1,0 +1,113 @@
+/* Layout */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.light-bg {
+    background-color: #f5f8ff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Hero */
+.hero-section {
+    background: #f0f6ff;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    color: #0a1f44;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #555;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Titles */
+.section-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0a1f44;
+}
+
+.section-subtitle {
+    color: #666;
+}
+
+/* Cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-card {
+    border: 2px solid #0a1f44;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0a1f44;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.btn-primary:hover {
+    background: #12306b;
+}
+
+.btn-accent {
+    background: #f4b400;
+    color: #0a1f44;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-accent-large {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #f4b400;
+    color: #0a1f44;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+/* CTA */
+.cta-section {
+    background: #0a1f44;
+    color: white;
+    padding: 80px 0;
+}

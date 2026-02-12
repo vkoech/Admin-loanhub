@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -17,18 +16,13 @@ public class RequesterServiceImpl implements RequesterService {
 
     @Override
     public Requester save(Requester requester) {
-        return requesterRepository.save(requester);
+        requesterRepository.save(requester);
+        return requester;
     }
 
     @Override
-    public List<Requester> getAllRequesters() {
-        return requesterRepository.findAll();
-    }
-
-    @Override
-    public Requester getRequesterById(UUID id) {
-        return requesterRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Requester not found"));
+    public List<Requester> findByEmail(String email) {
+        return requesterRepository.findByEmailIgnoreCase(email);
     }
 
 }

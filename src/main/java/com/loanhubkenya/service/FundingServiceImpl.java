@@ -42,5 +42,10 @@ public class FundingServiceImpl implements FundingService {
     public long getTotalFundings() {
         return fundingRepository.count();
     }
+
+    @Override
+    public List<Funding> getAllActiveFundings() {
+        return fundingRepository.findByActiveTrue();
+    }
 }
 

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="mainFooter" class="footer">
+    <p>
+        © <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span>
+        Loanhub Kenya — Empowering Entrepreneurs
+    </p>
+</footer>
+</body>
+</html>

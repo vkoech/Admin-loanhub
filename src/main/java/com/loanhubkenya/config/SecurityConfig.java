@@ -28,11 +28,21 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/",
+                                "/index",
+                                "/about",
+                                "/blog",
+                                "/funding",
+                                "/proposal",
+                                "/apply-funding",
+                                "/inquiry",
+                                "/proposals/request",
                                 "/admin/login",
                                 "/admin/do-login",
                                 "/css/**",
                                 "/js/**",
-                                "/images/**"
+                                "/images/**",
+                                "/webjars/**"
                         ).permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")

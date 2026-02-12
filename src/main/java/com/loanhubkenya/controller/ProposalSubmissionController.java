@@ -1,6 +1,5 @@
 package com.loanhubkenya.controller;
 
-
 import com.loanhubkenya.model.Requester;
 import com.loanhubkenya.service.ProposalService;
 import com.loanhubkenya.service.RequesterService;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -19,25 +19,42 @@ public class ProposalSubmissionController {
     private final ProposalService proposalService;
     private final RequesterService requesterService;
 
-    @GetMapping("/apply")
-    public String showProposalForm(Model model) {
+    @GetMapping("/request")
+    public String showApplyPage(
+            @RequestParam(required = false) String filterEmail,
+            @RequestParam(required = false, defaultValue = "apply") String activeTab,
+            Model model
+    ) {
         model.addAttribute("requester", new Requester());
         model.addAttribute("proposals", proposalService.getAllProposals());
+
+        List<Requester> requesters = List.of();
+        if (filterEmail != null && !filterEmail.isBlank()) {
+            requesters = requesterService.findByEmail(filterEmail);
+        }
+
+        model.addAttribute("requesters", requesters);
+        model.addAttribute("filterEmail", filterEmail);
+        model.addAttribute("activeTab", activeTab);
         return "apply";
     }
 
-    @PostMapping("/apply")
-    public String submitProposal(@ModelAttribute Requester requester,
-                                 @RequestParam UUID proposalId) {
-
+    @PostMapping("/request")
+    public String submitApplication(
+            @ModelAttribute Requester requester,
+            @RequestParam UUID proposalId,
+            Model model
+    ) {
         requester.setProposal(proposalService.getProposalById(proposalId));
         requesterService.save(requester);
 
-        return "redirect:/thank-you";
-    }
+        List<Requester> requesters = requesterService.findByEmail(requester.getEmail());
+        model.addAttribute("requesters", requesters);
+        model.addAttribute("filterEmail", requester.getEmail());
+        model.addAttribute("requester", new Requester());
+        model.addAttribute("proposals", proposalService.getAllProposals());
+        model.addAttribute("activeTab", "track");
 
-    @GetMapping("/thank-you")
-    public String thankYouPage() {
-        return "thank-you";
+        return "apply";
     }
 }

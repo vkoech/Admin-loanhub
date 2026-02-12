@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Writing Services – Loanhub Kenya</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- HEADER -->
+<div th:replace="header :: mainHeader"></div>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1>Let Our Experts Write Your Winning Proposal</h1>
+        <p class="hero-subtitle">
+            Increase your chances of securing funding through professionally written,
+            polished, and high-impact proposals tailored for grants, loans, and investor programs.
+        </p>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="blog-section">
+    <div class="container">
+        <h2 class="section-title">Our Proposal Writing Packages</h2>
+
+        <div class="cards-grid">
+
+            <!-- BASIC -->
+            <div class="card">
+                <h3>Basic Guidance</h3>
+                <p>
+                    Review of your draft plus detailed professional feedback to strengthen your proposal.
+                </p>
+                <a th:href="@{/inquiry}" class="btn-primary">Request Review</a>
+            </div>
+
+            <!-- STANDARD -->
+            <div class="card">
+                <h3>Standard Proposal Writing</h3>
+                <p>
+                    Complete proposal written from scratch — structured, polished,
+                    and ready for submission to funding agencies.
+                </p>
+                <a th:href="@{/inquiry}" class="btn-primary">Request Service</a>
+            </div>
+
+            <!-- PREMIUM -->
+            <div class="card">
+                <h3>Premium Proposal Package</h3>
+                <p>
+                    Full proposal + pitch deck + funding strategy consultation
+                    designed for maximum funding success.
+                </p>
+                <a th:href="@{/inquiry}" class="btn-accent">Get Premium Package</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIAL SECTION -->
+<section class="section light-bg">
+    <div class="container text-center">
+        <h2 class="section-title">Client Success Stories</h2>
+        <p class="section-subtitle">
+            We are proud to support entrepreneurs across Kenya in securing funding.
+            Real success stories coming soon.
+        </p>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2>Need a Proposal? Let’s Talk</h2>
+        <p>
+            Contact us for quotations, consultations, or customized proposal writing support.
+        </p>
+        <a th:href="@{/inquiry}" class="btn-accent-large">Make an Inquiry</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div th:replace="footer :: mainFooter"></div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Form – Loanhub Kenya</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- HEADER -->
+<div th:replace="header :: mainHeader"></div>
+
+<section class="hero-section">
+    <div class="container text-center">
+        <h1>Active Funding Opportunities</h1>
+        <p class="hero-subtitle">
+            Check on funding openings, eligibility and deadlines
+        </p>
+    </div>
+</section>
+
+<section class="blog-section">
+    <div class="container">
+  <h2 class="section-title">Active Funding Calls</h2>
+            <div class="cards-grid">
+                <div class="card" th:each="funding : ${fundings}">
+                    <h3 th:text="${funding.title}">Funding Title</h3>
+                    <p th:text="${funding.description}">
+                        Funding description goes here...
+                    </p>
+                    <p>
+                        <strong>Category:</strong>
+                        <span th:text="${funding.category}"></span>
+                    </p>
+                    <p>
+                        <strong>Link:</strong>
+                        <a th:href="${funding.link}" target="_blank">
+                            <span th:text="${funding.link}"></span>
+                        </a>
+                    </p>
+                    <p>
+                        <strong>Eligibility:</strong>
+                        <span th:text="${funding.eligibility}"></span>
+                    </p>
+                    <p>
+                        <strong>Deadline:</strong>
+                        <span th:text="${#temporals.format(funding.deadline, 'dd MMM yyyy')}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:replace="footer :: mainFooter"></div>
+</body>
+</html>
