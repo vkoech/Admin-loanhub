@@ -26,11 +26,12 @@
 
 body {
     margin: 0;
-    font-family: Inter, system-ui, sans-serif;
     background: var(--bg-main);
     color: var(--text-dark);
 }
-
+*{
+    font-family: 'Poppins', sans-serif;
+}
 a {
     text-decoration: none;
     color: inherit;
@@ -71,8 +72,8 @@ a {
 
 .nav-list a {
     display: block;
-    padding: 12px 14px;
-    border-radius: 10px;
+    padding: 9px 10px;
+    border-radius: 6px;
     color: var(--text-light);
     font-size: 14px;
     transition: background 0.2s;
@@ -283,7 +284,23 @@ tr:hover {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--primary);
+
 }
+
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+    outline: none;
+    background: #ffffff;
+}
+
+.form-group select:focus {
+    border-color: #4f46e5;
+}
+
 
 .form-row {
     display: grid;
@@ -313,21 +330,22 @@ tr:hover {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 10px 18px;
-    border-radius: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark);
+    background: #e2e8f0;
+    color: #334155;
 }
 
 .btn-secondary {
     background: #e2e8f0;
     color: #334155;
-    padding: 10px 18px;
-    border-radius: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
     text-decoration: none;
     font-size: 14px;
 }
@@ -335,4 +353,137 @@ tr:hover {
 .btn-secondary:hover {
     background: #cbd5f5;
 }
+
+/* ================= PROPOSAL MANAGEMENT TABS ================= */
+
+/* Tabs container */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tab {
+    padding: 8px 12px;
+    background: #f1f1f1;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.tab.active {
+    background: #2c3e50;
+    color: #fff;
+}
+
+/* Tab content visibility */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Side-by-side layout for form + table in tabs */
+.tab-content .form-table-flex {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Form card sizing inside tab */
+.tab-content .form-table-flex .form-card {
+    flex: 1;
+    min-width: 320px;
+    max-width: 400px;
+}
+
+/* Table sizing inside tab */
+.tab-content .form-table-flex .table-wrapper {
+    flex: 2;
+    overflow-x: auto;
+}
+.badge { display: inline-flex;
+ align-items: center;
+ justify-content: center;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+  }
+.badge.approved {
+ background: #ecfdf5;
+  color: #059669;
+  }
+.badge.rejected {
+ background: #fef2f2;
+ color: #dc2626;
+ }
+ /* Pending */
+ .badge.pending
+  {
+  background: #fffbeb;
+  color: #d97706;
+   }
+  /* Subtle hover effect */
+  .badge:hover
+  {
+  transform: translateY(-1px);
+  }
+  /* ================= STATUS UPDATE FORM ================= */
+  td form {
+      display: flex;
+      align-items: center;
+      gap: 8px; /* space between dropdown and button */
+  }
+
+  td form select {
+      padding: 6px 10px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 100px; /* keeps dropdown uniform */
+  }
+
+  td form select:focus {
+      outline: none;
+      border-color: #4f46e5;
+  }
+
+  td form button {
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #4f46e5;
+      color: #ffffff;
+      transition: all 0.2s ease;
+  }
+
+  td form button:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+  }
+
+  td form button:active {
+      transform: scale(0.97);
+  }
+
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 1000px) {
+    .tab-content .form-table-flex {
+        flex-direction: column;
+    }
+
+    .tab-content .form-table-flex .form-card,
+    .tab-content .form-table-flex .table-wrapper {
+        max-width: 100%;
+    }
+}
+
 

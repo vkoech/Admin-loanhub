@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-
-<div th:fragment="sidebar(activePage)" class="sidebar">
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<div th:fragment="sidebar(activePage)" class="sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
     <h4>Admin Panel</h4>
 
     <ul class="nav-list">
@@ -15,23 +14,20 @@
         <li>
             <a th:href="@{/admin/funding}"
                th:classappend="${activePage=='funding'} ? 'active'">
-                Fundings
+                Funding's
             </a>
         </li>
         <li>
             <a th:href="@{/admin/proposal-management}"
-               th:classappend="${activePage=='proposals'} ? 'active'">
+               th:classappend="${activePage=='proposal-management'} ? 'active'">
                 Proposals
             </a>
         </li>
         <li>
-            <a th:href="@{/admin/loans}"
-               th:classappend="${activePage=='loans'} ? 'active'">
-                Loans
+            <a th:href="@{/admin/proposal-request}"
+               th:classappend="${activePage=='proposal-request'} ? 'active'">
+                Proposal Requests
             </a>
         </li>
     </ul>
 </div>
-
-</body>
-</html>

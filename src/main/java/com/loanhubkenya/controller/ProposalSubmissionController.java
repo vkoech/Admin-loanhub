@@ -1,5 +1,6 @@
 package com.loanhubkenya.controller;
 
+import com.loanhubkenya.model.Funding;
 import com.loanhubkenya.model.Requester;
 import com.loanhubkenya.service.ProposalService;
 import com.loanhubkenya.service.RequesterService;
@@ -57,4 +58,5 @@ public class ProposalSubmissionController {
 
         return "apply";
     }
+
 }

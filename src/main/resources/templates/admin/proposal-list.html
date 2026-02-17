@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Proposals List</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div class="admin-layout">
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar('proposal-request')"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h4>Proposals Requests Lists</h4>
+            <div class="table-wrapper" th:if="${proposals != null}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Proposal</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="r : ${proposals}">
+                        <td th:text="${r.fullName}"></td>
+                        <td th:text="${r.email}"></td>
+                        <td th:text="${r.proposal.title}"></td>
+                        <td>
+                           <span th:text="${r.status}"
+                                 th:classappend="${r.status == T(com.loanhubkenya.enums.RequestStatus).APPROVED} ? 'badge approved' :
+                                  (${r.status == T(com.loanhubkenya.enums.RequestStatus).REJECTED} ? 'badge rejected' :
+                                  'badge pending')">
+                           </span>
+                        </td>
+                        <td>
+                            <form th:action="@{/admin/{id}/status(id=${r.id})}" method="post">
+                                <select name="status">
+                                    <option value="PENDING">Pending</option>
+                                    <option value="APPROVED">Approved</option>
+                                    <option value="REJECTED">Rejected</option>
+                                    <option value="IN_PROGRESS">In Progress</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+</body>
+</html>

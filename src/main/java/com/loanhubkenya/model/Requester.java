@@ -1,5 +1,6 @@
 package com.loanhubkenya.model;
 
+import com.loanhubkenya.enums.RequestStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,8 @@ public class Requester {
     private UUID id;
     private String fullName;
     private String email;
+    @Enumerated(EnumType.STRING)
+    private RequestStatus status = RequestStatus.PENDING;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "proposal_id", nullable = false)

@@ -23,7 +23,6 @@ public class FundingServiceImpl implements FundingService {
 
     @Override
     public List<Funding> getAllFundings() {
-        System.out.println("🔥 Fetching fundings...");
         return fundingRepository.findAll();
     }
 

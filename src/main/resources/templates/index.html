@@ -3,83 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquiry Form – Loanhub Kenya</title>
+    <title>Loanhub Kenya – Business Funding Platform</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
 <div th:replace="header :: mainHeader"></div>
 
-<section
-        class="relative h-[75vh] flex items-center justify-center text-center text-white">
-
-    <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center"
-         th:style="'background-image:url(' + @{/images/home_loan_hub.jpeg} + ');'">
-    </div>
-
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-blue-950/70"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-3xl px-6">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Your Gateway to Business Funding in Kenya
-        </h2>
-
-        <p class="text-lg md:text-xl mb-8 text-gray-200">
-            Discover grants, loans, and investors — plus expert proposal writing to help you secure funding successfully.
+<section class="hero-section">
+    <div class="container text-center">
+        <h1>Your Gateway to Business Funding in Kenya</h1>
+        <p class="hero-subtitle">
+            Discover verified grants, loans, and investor opportunities —
+            plus expert proposal writing to help you secure funding successfully.
         </p>
+    </div>
+</section>
+<!-- SERVICES SECTION -->
+<section class="blog-section">
+    <div class="container">
+        <h2 class="section-title">Our Core Services</h2>
 
-        <div class="flex justify-center gap-4 flex-wrap">
-            <a th:href="@{/funding}"
-               class="bg-yellow-400 text-gray-900 px-7 py-3 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition">
-                Explore Funding
-            </a>
+        <div class="cards-grid">
 
-            <a th:href="@{/proposal}"
-               class="border border-white px-7 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition">
-                Get Proposal Help
-            </a>
+            <!-- Funding -->
+            <div class="card">
+                <h3>Find Grants & Loans</h3>
+                <p>
+                    Browse verified funding opportunities tailored for startups,
+                    SMEs, and entrepreneurs across Kenya.
+                </p>
+                <a th:href="@{/funding}" class="btn-primary">Browse Funding</a>
+            </div>
+
+            <!-- Proposal -->
+            <div class="card">
+                <h3>Professional Proposal Writing</h3>
+                <p>
+                    Get professionally written or refined proposals that increase
+                    your chances of approval from funding agencies.
+                </p>
+                <a th:href="@{/proposal}" class="btn-primary">View Services</a>
+            </div>
+
+            <!-- Training -->
+            <div class="card">
+                <h3>Funding Skills & Guidance</h3>
+                <p>
+                    Learn practical strategies to pitch investors,
+                    apply confidently, and secure funding consistently.
+                </p>
+                <a th:href="@{/proposal}" class="btn-primary">Learn More</a>
+            </div>
+
         </div>
     </div>
 </section>
 
-<section class="py-20 max-w-6xl mx-auto px-6">
 
-    <h2 class="text-3xl font-bold text-center text-blue-900 mb-14">
-        Our Core Services
-    </h2>
-
-    <div class="grid md:grid-cols-3 gap-8">
-
-        <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
-            <div class="text-blue-800 text-3xl mb-4">💰</div>
-            <h3 class="text-xl font-semibold mb-3">Find Grants & Loans</h3>
-            <p class="text-gray-600">
-                Browse verified funding opportunities tailored for startups, SMEs, and entrepreneurs in Kenya.
-            </p>
-        </div>
-
-        <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
-            <div class="text-blue-800 text-3xl mb-4">📝</div>
-            <h3 class="text-xl font-semibold mb-3">Proposal Writing</h3>
-            <p class="text-gray-600">
-                Get professionally written or refined proposals that increase your chances of approval.
-            </p>
-        </div>
-
-        <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
-            <div class="text-blue-800 text-3xl mb-4">📊</div>
-            <h3 class="text-xl font-semibold mb-3">Funding Skills</h3>
-            <p class="text-gray-600">
-                Learn practical strategies to pitch, apply, and secure funding confidently and consistently.
-            </p>
-        </div>
-
+<!-- TRUST SECTION -->
+<section class="section light-bg">
+    <div class="container text-center">
+        <h2 class="section-title">Why Choose Loanhub Kenya?</h2>
+        <p class="section-subtitle">
+            We connect entrepreneurs to funding opportunities while providing
+            professional support to improve funding success rates.
+        </p>
     </div>
 </section>
 
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2>Ready to Secure Funding?</h2>
+        <p>
+            Start exploring opportunities or get professional proposal assistance today.
+        </p>
+        <a th:href="@{/inquiry}" class="btn-accent-large">Get Started</a>
+    </div>
+</section>
+<!-- FOOTER -->
 <div th:replace="footer :: mainFooter"></div>
 
 </body>
